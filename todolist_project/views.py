@@ -8,7 +8,7 @@ from todolist_project.models import Task, Tag
 
 class Index(LoginRequiredMixin, generic.ListView):
     model = Task
-    queryset = Task.objects.filter("datetime").group_by("is_done")
+    queryset = Task.objects.all()
     template_name = "todolist_project/index.html"
 
 
