@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from todolist_project.models import Task
+from todolist_project.models import Task, Tag
 
 
 class Index(LoginRequiredMixin, generic.ListView):
@@ -26,5 +26,27 @@ class IndexUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class IndexDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
-    fields = "__all__"
     success_url = reverse_lazy("todolist_project:index")
+
+
+class TagsListView(LoginRequiredMixin, generic.ListView):
+    model = Tag
+    queryset = Tag.objects.all()
+    template_name = "todolist_project/tags.html"
+
+
+class TagsCreateView(LoginRequiredMixin, generic.ListView):
+    model = Tag
+    fields = "__all__"
+    success_url = reverse_lazy("todolist_project:tag_list")
+
+
+class TagsUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Tag
+    success_url = reverse_lazy("todolist_project:tag_list")
+
+
+class TagsDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("todolist_project:tag_list")
