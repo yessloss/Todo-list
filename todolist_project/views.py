@@ -32,10 +32,10 @@ class IndexDeleteView(LoginRequiredMixin, generic.DeleteView):
 class TagsListView(LoginRequiredMixin, generic.ListView):
     model = Tag
     queryset = Tag.objects.all()
-    template_name = "todolist_project/tags.html"
+    template_name = "todolist_project/tag.html"
 
 
-class TagsCreateView(LoginRequiredMixin, generic.ListView):
+class TagsCreateView(LoginRequiredMixin, generic.CreateView):
     model = Tag
     fields = "__all__"
     success_url = reverse_lazy("todolist_project:tag_list")
