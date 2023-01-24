@@ -6,47 +6,47 @@ from django.views import generic
 from todolist_project.models import Task, Tag
 
 
-class Index(LoginRequiredMixin, generic.ListView):
+class Index(generic.ListView):
     model = Task
     queryset = Task.objects.all()
     template_name = "todolist_project/index.html"
 
 
-class IndexCreateView(LoginRequiredMixin, generic.CreateView):
+class IndexCreateView(generic.CreateView):
     model = Task
     fields = "__all__"
     success_url = reverse_lazy("todolist_project:index")
 
 
-class IndexUpdateView(LoginRequiredMixin, generic.UpdateView):
+class IndexUpdateView(generic.UpdateView):
     model = Task
     fields = "__all__"
     success_url = reverse_lazy("todolist_project:index")
 
 
-class IndexDeleteView(LoginRequiredMixin, generic.DeleteView):
+class IndexDeleteView(generic.DeleteView):
     model = Task
     success_url = reverse_lazy("todolist_project:index")
 
 
-class TagsListView(LoginRequiredMixin, generic.ListView):
+class TagsListView(generic.ListView):
     model = Tag
     queryset = Tag.objects.all()
     template_name = "todolist_project/tag.html"
 
 
-class TagsCreateView(LoginRequiredMixin, generic.CreateView):
+class TagsCreateView(generic.CreateView):
     model = Tag
     fields = "__all__"
     success_url = reverse_lazy("todolist_project:tag_list")
 
 
-class TagsUpdateView(LoginRequiredMixin, generic.UpdateView):
+class TagsUpdateView(generic.UpdateView):
     model = Tag
     success_url = reverse_lazy("todolist_project:tag_list")
 
 
-class TagsDeleteView(LoginRequiredMixin, generic.DeleteView):
+class TagsDeleteView(generic.DeleteView):
     model = Task
     fields = "__all__"
     success_url = reverse_lazy("todolist_project:tag_list")
