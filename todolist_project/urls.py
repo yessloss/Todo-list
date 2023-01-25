@@ -16,7 +16,7 @@ urlpatterns = [
     path("tags/", TagsListView.as_view(), name="tag_list"),
     path("tags/create/", TagsCreateView.as_view(), name="tag_create"),
     path("tags/<int:pk>/update/", TagsUpdateView.as_view(), name="tag_update"),
-    path("task/<int:pk>/delete/", TagsDeleteView.as_view(), name="tag_delete"),
+    path("tags/<int:pk>/delete/", TagsDeleteView.as_view(), name="tag_delete"),
 ]
 
 app_name = "todolist_project"
