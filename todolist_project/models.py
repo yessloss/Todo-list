@@ -8,6 +8,7 @@ class Tag(models.Model):
 class Task(models.Model):
     content = models.TextField()
     datetime = models.DateTimeField()
-    deadline = models.DateTimeField(null=True)
+    deadline = models.DateTimeField(null=True, blank=True)
     is_done = models.BooleanField()
     tags = models.ManyToManyField(Tag)
+
