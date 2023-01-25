@@ -15,17 +15,20 @@ class Index(generic.ListView):
 class IndexCreateView(generic.CreateView):
     model = Task
     fields = "__all__"
+    template_name = "todolist_project/index_form.html"
     success_url = reverse_lazy("todolist_project:index")
 
 
 class IndexUpdateView(generic.UpdateView):
     model = Task
     fields = "__all__"
+    template_name = "todolist_project/index_form.html"
     success_url = reverse_lazy("todolist_project:index")
 
 
 class IndexDeleteView(generic.DeleteView):
     model = Task
+    template_name = "todolist_project/index_confirm_delete.html"
     success_url = reverse_lazy("todolist_project:index")
 
 
@@ -43,6 +46,7 @@ class TagsCreateView(generic.CreateView):
 
 class TagsUpdateView(generic.UpdateView):
     model = Tag
+    fields = "__all__"
     success_url = reverse_lazy("todolist_project:tag_list")
 
 
