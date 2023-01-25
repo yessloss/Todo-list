@@ -53,4 +53,5 @@ class TagsUpdateView(generic.UpdateView):
 class TagsDeleteView(generic.DeleteView):
     model = Task
     fields = "__all__"
+    template_name = "todolist_project/tag_confirm_delete.html"
     success_url = reverse_lazy("todolist_project:tag_list")
