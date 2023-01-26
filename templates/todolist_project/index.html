@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    TODO List
+    <a href="{% url 'todolist_project:task_create' %}" class="btn btn-primary link-to-page">
+      Add new
+    </a>
+  </h1>
+  {% for task in task_list %}
+    <p><strong>{{ task.content }}</strong>
+      {% if task.is_done %} |
+        Done |
+        <a href="{% url 'todolist_project:task_update' pk=task.id %}" class="btn link-to-page">Undo</a>
+      {% else %} |
+        Not done |
+        <a href="{% url 'todolist_project:task_update' pk=task.id %}" class="btn link-to-page">Complete</a>
+      {% endif %}
+    </p>
+    <p>Created: {{ task.datetime }} {% if task.deadline %} Deadline: {{ task.deadline }}{% endif %}</p>
+    <p>Tags: {% for tag in task.tags.all %} {{ tag.name }}{% endfor %}
+      <a href="{% url 'todolist_project:task_update' pk=task.id %}" class="btn link-to-page">Update</a>
+      <a href="{% url 'todolist_project:task_delete' pk=task.id %}" class="btn link-to-page">Delete</a>
+    </p>
+  {% endfor %}
+{% endblock %}
+
